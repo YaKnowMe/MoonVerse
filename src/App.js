@@ -30,12 +30,16 @@ class App extends Component {
       <div className="App">
         <div className="siimple-grid">
           <div className="siimple-grid-row">
-            <div className="siimple-grid-col siimple-grid-col--12 planet" style={{...styles, scale: this.state.scale, transform: 'scale(' + this.state.scale + ')'}}>
+            <div className="siimple-grid-col siimple-grid-col--12" style={{...styles, scale: this.state.scale, transform: 'scale(' + this.state.scale + ')'}}>
 
-              <img src={ redPlanet } height={ planets.height } width= { planets.width }
+              <img className="planet"
+                src={ redPlanet }
+                height={ planets.height }
+                width= { planets.width }
                 onClick={ this.onClickPlanet.bind(this) }
-                style={ { cursor: 'pointer' } } />
-
+                style={ { cursor: 'pointer' } }
+                />
+              
             </div>
           </div>
         </div>
