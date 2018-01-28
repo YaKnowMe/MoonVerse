@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import redPlanet from '../assets/planets/red-planet.svg';
 import { User } from '../users/user';
-import { Greeter } from '../users/greeter';
 
 const styles = {
   transition: 'all 0.3s ease-out'
@@ -27,7 +26,6 @@ export class Planet extends User {
     return(
     <div>
       <div className="siimple-grid">
-        <Greeter/>
         <div className="siimple-grid-row">
           <div className="siimple-grid-col siimple-grid-col--12">
             <div style={{...styles, scale: this.state.planet.scale, transform: 'scale(' + this.state.planet.scale + ')'}}>

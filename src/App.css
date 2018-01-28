@@ -7,7 +7,7 @@ html {
 }
 
 .planet {
-  margin-top: 50px;
+  margin-top: 10px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -25,8 +25,8 @@ html {
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  /*LOGO CSS*/
+  margin-right: 3px;
 }
 
 .App-header {
