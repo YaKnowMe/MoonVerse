@@ -10,6 +10,7 @@ export class User extends Component {
         points: 0
       },
       planet: {
+        loaded: false,
         scale: 1,
         height: "500px",
         width: "500px"
