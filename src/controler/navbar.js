@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Logo from '../assets/logo.png';
 import { Greeter } from '../users/greeter';
+import { Link } from 'react-router-dom';
 
 export class Navbar extends Component {
   constructor(props) {
@@ -24,7 +25,9 @@ export class Navbar extends Component {
 
     const authmenu = this.props.signed !== true ? authPages.map(page => {
       return (
-        <a className="siimple-navbar-link" onClick={ () => alert(page + ' is W.I.P') }> { page } </a>
+        <a className="siimple-navbar-link">
+          <Link to={ '/' + page }>{ page }</Link>
+        </a>
       );
     }) :  <Greeter/>
 

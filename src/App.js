@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Planet } from './planets/planet';
-import {Navbar} from './controler/navbar';
+import { Navbar } from './controler/navbar';
 import './sass/App.css';
 
 
@@ -13,6 +13,7 @@ class App extends Component {
         <Navbar/>
         {/*Planet/User settings*/}
         <Planet/>
+
       </div>
     );
   }
