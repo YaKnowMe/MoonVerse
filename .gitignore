@@ -9,6 +9,12 @@
 # production
 /build
 
+#SASS CSS output
+./src/sass/App.css
+
+#firebase
+/src/firebase
+
 # misc
 .DS_Store
 .env.local

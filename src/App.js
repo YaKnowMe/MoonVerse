@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Planet } from './planets/planet';
 import {Navbar} from './controler/navbar';
-import './App.css';
+import './sass/App.css';
 
 
 class App extends Component {

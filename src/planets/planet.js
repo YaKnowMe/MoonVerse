@@ -37,7 +37,7 @@ export class Planet extends User {
 
   render() {
 
-    const loaderControler = this.state.planet.loaded == false ? <img src={ Loader }/> : (
+    const loaderControler = this.state.planet.loaded === false ? <img src={ Loader }/> : (
       <div className="siimple-grid-row">
         <div className="siimple-grid-col siimple-grid-col--12">
           <h1>You have {this.state.user.points} points</h1>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Planet } from '../planets/planet';
 
 export class User extends Component {
   constructor(props) {

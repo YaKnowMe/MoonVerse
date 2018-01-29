@@ -22,9 +22,9 @@ export class Navbar extends Component {
 
     const authPages = this.state.options.auth;
 
-    const authmenu = this.props.signed != true ? authPages.map(page => {
+    const authmenu = this.props.signed !== true ? authPages.map(page => {
       return (
-        <a className="siimple-navbar-link"> { page } </a>
+        <a className="siimple-navbar-link" onClick={ () => alert(page + ' is W.I.P') }> { page } </a>
       );
     }) :  <Greeter/>
 

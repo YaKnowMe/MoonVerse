@@ -1,0 +1,68 @@
+// Variables
+$bgcolor: #013243;
+$bgcolorclicked: #0c2461;
+
+// SCSS
+html {
+  background-color: $bgcolor;
+  transition: background-color 1s ease-out;
+}
+html:active {
+  background-color: $bgcolorclicked;
+}
+
+.App {
+  text-align: center;
+
+  .App-logo {
+    margin-right: 3px;
+  }
+
+  .App-header {
+    height: 150px;
+    padding: 20px;
+    color: white;
+  }
+
+  .App-title {
+    font-size: 1.5em;
+  }
+
+  .App-intro {
+    font-size: large;
+  }
+}
+
+.planet {
+  margin-top: 10px;
+  -webkit: {
+    touch-callout: none;
+    user-select: none;
+    user-drag: none;
+  }
+  -khtml: {
+    user-select: none;
+  }
+  -moz: {
+    user-select: none;
+  }
+  -ms: {
+    user-select: none;
+  }
+  -o: {
+    user-select: none;
+  }
+  user: {
+    select: none;
+    drag: none;
+  }
+}
+
+.white-color {
+  color: white;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
