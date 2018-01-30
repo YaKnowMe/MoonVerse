@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
 import {Navbar} from '../../controler/navbar';
 import '../../sass/App.css';
-
-
-const LoginRoute = () => (
-  <Switch>
-    <Route exact path='/Login' component={ Login }/>
-  </Switch>
-);
 
 class Login extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container-fluid">
         {/*Navbar*/}
         <Navbar/>
         {/*W.I.P*/}
@@ -25,4 +17,4 @@ class Login extends Component {
 }
 
 
-export default LoginRoute;
+export default Login;

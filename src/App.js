@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
-import { Planet } from './planets/planet';
-import { Navbar } from './controler/navbar';
-import './sass/App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import NotFound from './pages/NotFound/NotFound';
 
 
 class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {/*Navbar*/}
-        <Navbar/>
-        {/*Planet/User settings*/}
-        <Planet/>
-
-      </div>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/" component={ Home }/>
+            <Route path="/Login" component={ Login }/>
+            <Route path="/Register" component={ Register }/>
+            <Route component={ NotFound }/>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

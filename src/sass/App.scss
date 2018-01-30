@@ -1,40 +1,53 @@
 // Variables
 $bgcolor: #013243;
 $bgcolorclicked: #0c2461;
+$mainfontcolor: #145574;
+
+// Fonts
+@font-face {
+    font-family: bebas;
+    src: url(../assets/fonts/BEBAS___.ttf);
+}
+
+@font-face {
+    font-family: telegrafico;
+    src: url(../assets/fonts/telegrafico.ttf);
+}
 
 // SCSS
-html {
+body {
   background-color: $bgcolor;
   transition: background-color 1s ease-out;
 }
-html:active {
+
+body:active {
   background-color: $bgcolorclicked;
+}
+
+h1 {
+  color: $mainfontcolor;
+  font-family: bebas;
+}
+
+nav {
+  a {
+    color: $mainfontcolor;
+  }
+
+  .Logo {
+    margin-right: 5px;
+  }
+
+  font-family: bebas;
 }
 
 .App {
   text-align: center;
-
-  .App-logo {
-    margin-right: 3px;
-  }
-
-  .App-header {
-    height: 150px;
-    padding: 20px;
-    color: white;
-  }
-
-  .App-title {
-    font-size: 1.5em;
-  }
-
-  .App-intro {
-    font-size: large;
-  }
 }
 
 .planet {
   margin-top: 10px;
+  margin: 0 auto;
   -webkit: {
     touch-callout: none;
     user-select: none;
@@ -56,13 +69,4 @@ html:active {
     select: none;
     drag: none;
   }
-}
-
-.white-color {
-  color: white;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

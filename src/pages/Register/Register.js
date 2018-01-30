@@ -7,7 +7,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container-fluid">
         {/*Navbar*/}
         <Navbar/>
         {/*W.I.P*/}

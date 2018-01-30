@@ -25,29 +25,33 @@ export class Navbar extends Component {
 
     const authmenu = this.props.signed !== true ? authPages.map(page => {
       return (
-        <a className="siimple-navbar-link">
-          <Link to={ '/' + page }>{ page }</Link>
-        </a>
+        <li className="nav-item">
+          <a className="nav-link">
+            <Link to={ '/' + page }>{ page }</Link>
+          </a>
+        </li>
       );
     }) :  <Greeter/>
 
     return(
       <div>
-        <div className="siimple-navbar">
-          <div className="siimple-layout--left">
-
-            <a className="siimple-navbar-title">
-              <img className="App-logo" src={ Logo } height={ this.state.logo.height } width={ this.state.logo.width }/>
+        <nav className="navbar navbar-expand-lg navbar-dark">
+          <a className="navbar-brand">
+            <Link to={'/'}>
+              <img className="Logo" src={ Logo } height={ this.state.logo.height } width={ this.state.logo.width }/>
               { this.state.title }
-            </a>
-          </div>
-          <div className="siimple-layout--right">
-
+            </Link>
+          </a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ml-auto">
             { authmenu }
-
-          </div>
+          </ul>
         </div>
-      </div>
+      </nav>
+    </div>
     );
   }
 }

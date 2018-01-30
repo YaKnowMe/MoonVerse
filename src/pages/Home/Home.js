@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
-import {Navbar} from '../../controler/navbar';
+import { Planet } from '../../planets/planet';
+import { Navbar } from '../../controler/navbar';
 import '../../sass/App.css';
 
 
-class NotFound extends Component {
+class Home extends Component {
 
   render() {
     return (
       <div className="App container-fluid">
         {/*Navbar*/}
         <Navbar/>
-        {/*W.I.P*/}
-        <h1>404 will be here</h1>
+        {/*Planet/User settings*/}
+        <Planet/>
+
       </div>
     );
   }
 }
 
 
-export default NotFound;
+export default Home;
