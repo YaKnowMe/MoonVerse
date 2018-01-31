@@ -17,8 +17,8 @@ export class Planet extends User {
       },
       planet: {
         scale: this.state.planet.scale < 1 ? 1 : 0.9,
-        height: "500px",
-        width: "500px"
+        height: '500px',
+        width: '500px'
       }
     });
 
@@ -29,8 +29,8 @@ export class Planet extends User {
       planet: {
         loaded: true,
         scale: 1,
-        height: "500px",
-        width: "500px"
+        height: '500px',
+        width: '500px'
       }
     });
   }
@@ -48,13 +48,12 @@ export class Planet extends User {
 
     return(
     <div>
-
       <div className="row">
         <div className="col">
           <div style={{...styles, scale: this.state.planet.scale, transform: 'scale(' + this.state.planet.scale + ')'}}>
-            <img className="planet"
+            <img className="planet img-fluid"
               src={ redPlanet }
-              height={ this.state.planet.height }
+              height={ this.state.planet.heigh }
               width={ this.state.planet.width }
               onClick={ this.onClickPlanet.bind(this) }
               onLoad={ this.hideLoader.bind(this) }

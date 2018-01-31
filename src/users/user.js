@@ -11,8 +11,8 @@ export class User extends Component {
       planet: {
         loaded: false,
         scale: 1,
-        height: "500px",
-        width: "500px"
+        height: '500px',
+        width: '500px'
       }
     };
   }
