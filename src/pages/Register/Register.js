@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Navbar} from '../../controler/navbar';
+import {Navbar} from '../../components/navbar';
 import '../../sass/App.css';
 
 

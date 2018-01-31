@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Planet } from '../../planets/planet';
-import { Navbar } from '../../controler/navbar';
+import { Game } from '../../game/main';
+import { Navbar } from '../../components/navbar';
 import '../../sass/App.css';
 
 
@@ -12,7 +12,7 @@ class Home extends Component {
         {/*Navbar*/}
         <Navbar/>
         {/*Planet/User settings*/}
-        <Planet/>
+        <Game/>
 
       </div>
     );

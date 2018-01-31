@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import cookie from 'react-cookies';
 
 export class User extends Component {
   constructor(props) {
@@ -6,7 +7,7 @@ export class User extends Component {
     this.state = {
       user: {
         username: 'Anonymous',
-        points: 0
+        points: Number(cookie.load('points') != undefined ? cookie.load('points') : '0')
       },
       planet: {
         loaded: false,
@@ -16,5 +17,4 @@ export class User extends Component {
       }
     };
   }
-
 }

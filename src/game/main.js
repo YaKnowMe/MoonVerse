@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import redPlanet from '../assets/planets/red-planet.svg';
 // Loader by Sam Herbert
 import Loader from '../assets/loader.svg'
+
+import cookie from 'react-cookies';
+
 import { User } from '../users/user';
+
 
 const styles = {
   transition: 'all 0.3s ease-out'
 }
 
-export class Planet extends User {
+export class Game extends User {
 
   onClickPlanet() {
     this.setState({
@@ -21,7 +25,7 @@ export class Planet extends User {
         width: '500px'
       }
     });
-
+    cookie.save('points', this.state.user.points, { path:'/' });
   }
 
   hideLoader() {
@@ -34,17 +38,16 @@ export class Planet extends User {
       }
     });
   }
+  resetPoints(){
+    cookie.remove('points');
+    window.location.reload();
+  }
 
   render() {
 
     const playerPoints = <h1>You &nbsp;&nbsp; have &nbsp;&nbsp; {this.state.user.points} &nbsp;&nbsp; points</h1>;
 
-    const loaderControler = this.state.planet.loaded === false ? <img src={ Loader }/> : (
-      <div className="siimple-grid-row">
-        <div className="siimple-grid-col siimple-grid-col--12">
-          { playerPoints }
-        </div>
-      </div> );
+    const loaderControler = this.state.planet.loaded === false ? <img src={ Loader }/> : <div>{ playerPoints }</div>;
 
     return(
     <div>
@@ -63,6 +66,7 @@ export class Planet extends User {
         </div>
       </div>
             { loaderControler }
+            <button onClick={ this.resetPoints }>Click (dev)</button>;
       </div>
 
     );
