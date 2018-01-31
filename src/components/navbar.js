@@ -13,7 +13,7 @@ export class Navbar extends Component {
         width: '16px'
       },
       options: {
-        auth: ['Login', 'Register'],
+        auth: ['Login', 'Register', 'reset'],
         settings: 'Settings'
       }
     }

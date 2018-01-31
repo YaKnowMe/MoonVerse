@@ -9,9 +9,11 @@ class Home extends Component {
   render() {
     return (
       <div className="App container-fluid">
+        
         {/*Navbar*/}
         <Navbar/>
-        {/*Planet/User settings*/}
+
+        {/*Game*/}
         <Game/>
 
       </div>

@@ -66,7 +66,7 @@ export class Game extends User {
         </div>
       </div>
             { loaderControler }
-            <button onClick={ this.resetPoints }>Click (dev)</button>;
+            {/* <button onClick={ this.resetPoints }>Click (dev)</button>; */}
       </div>
 
     );
