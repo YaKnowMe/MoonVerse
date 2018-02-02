@@ -8,6 +8,8 @@ class Reset extends Component {
 
   componentDidMount() {
     cookie.remove('points');
+    cookie.remove('moonBought');
+    cookie.remove('power');
     window.location.href = '/';
   }
 

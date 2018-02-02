@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Logo from '../assets/logo.png';
-import { Greeter } from '../users/greeter';
+import { Greeter } from './greeter';
 import { Link } from 'react-router-dom';
 
 export class Navbar extends Component {
