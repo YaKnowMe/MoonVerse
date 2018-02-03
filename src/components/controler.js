@@ -6,6 +6,7 @@ export class Controler extends Component {
     super(props)
     this.state = {
       shopOpened: false,
+      moonUpgradeOpened: false,
 
       moonBought: cookie.load('moonBought') != undefined ? cookie.load('moonBought') === 'true' ? true : false : false,
 
@@ -25,7 +26,7 @@ export class Controler extends Component {
       items: {
         moon: {
           name: 'Moon',
-          price: 150,
+          price: Number(cookie.load('moonPrice') != undefined ? cookie.load('moonPrice') : '150'),
           power: 2,
           height: '150px',
           width: '150px',

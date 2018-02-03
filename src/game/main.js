@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import redPlanet from '../assets/planets/red-planet.svg';
+import normalMoonImg from '../assets/moons/moon.png';
 // Loader by Sam Herbert
 import Loader from '../assets/loader.svg'
 
 import cookie from 'react-cookies';
 import Draggable, {DraggableCore} from 'react-draggable';
+import { Modal, Button, Badge } from 'react-bootstrap';
 
 import { Controler } from '../components/controler';
 
@@ -48,41 +50,62 @@ export class Game extends Controler {
   }
 
   // ITEMS FROM SHOP
-  moon() {
-  if (this.state.moonBought === true) {
-    this.setState({
-      user: {
-        ...this.state.user,
-        properties: { power: this.state.user.properties.power += 1 }
-      }
-    });
-  } else if (this.state.user.points >= this.state.items.moon.price) {
+  // MOON
+  moonBuy() {
+    if (this.state.moonBought === true && this.state.user.points >= this.state.items.moon.price) {
+      this.state.user.points -= this.state.items.moon.price;
+      this.setState({
+        user: {
+          ...this.state.user,
+          properties: { power: this.state.user.properties.power += this.state.items.moon.power }
+        },
+        items: {
+          ...this.state.items,
+          moon: {
+            ...this.state.items.moon,
+            price: this.state.items.moon.price += Math.round(this.state.items.moon.price / 2)
+          }
+        }
+      });
+    } else if (this.state.user.points >= this.state.items.moon.price) {
 
-    this.state.user.points -= this.state.items.moon.price;
+      this.state.user.points -= this.state.items.moon.price;
 
-    this.setState({
-      moonBought: true,
-      user: {
-        ...this.state.user,
-        properties: { power: this.state.user.properties.power += this.state.items.moon.power }
-      }
-    });
+      this.setState({
+        moonBought: true,
+        user: {
+          ...this.state.user,
+          properties: { power: this.state.user.properties.power += this.state.items.moon.power }
+        },
+        items: {
+          ...this.state.items,
+          moon: {
+            ...this.state.items.moon,
+            price: this.state.items.moon.price += this.state.items.moon.price / 2
+          }
+        }
+      });
 
+      cookie.save('moonBought', true, { path:'/' });
+
+    } else {
+      alert('You don\'t have money for that');
+    }
+
+    cookie.save('power', this.state.user.properties.power, { path:'/' });
+    cookie.save('moonPrice', this.state.items.moon.price, { path: '/' });
     cookie.save('points', this.state.user.points, { path:'/' });
-    cookie.save('moonBought', true, { path:'/' });
-
-  } else {
-    alert('You don\'t have money for that');
   }
 
-  cookie.save('power', this.state.user.properties.power, { path:'/' });
-
-}
+  openMoonUpgrade() {
+    this.setState({
+      moonUpgradeOpened: this.state.moonUpgradeOpened === true ? false : true
+    });
+  }
 
   render() {
 
     const playerPoints = <h1>{this.state.user.points} &nbsp;$</h1>;
-
 
 
     // moon
@@ -90,34 +113,67 @@ export class Game extends Controler {
 
     const shopMoon = this.state.moonBought === false ? (
       <div>
-        <button onClick={ this.moon.bind(this) } type="button" className="btn btn-outline-primary space">{ moonbtnName }</button>
+        <button onClick={ this.moonBuy.bind(this) } type="button" className="btn btn-outline-primary space">{ moonbtnName }</button>
       </div>
     ) : (
       <div>
-        <button onClick={ this.moon.bind(this) } type="button" className="btn btn-outline-primary space" disabled>{ moonbtnName }</button>
+        <img src={normalMoonImg} height='40px' width='40px'/>
+        <button type="button" className="btn btn-outline-primary space" disabled>{ this.state.items.moon.name } (Bought)</button>
       </div>
     );
 
+    const moonBtnUpdater = (
+      <button onClick={ this.moonBuy.bind(this) } type="button" className="btn btn-outline-primary space">{ moonbtnName }</button>
+    );
+
+    const moonUgrade = this.state.moonUpgradeOpened === true ? (
+      <div className="static-modal">
+        <Modal.Dialog>
+          <Modal.Header>
+            <Modal.Title>{ this.state.items.moon.name } - Upgrade</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body>
+            Your moon power: <span class="badge badge-dark">{ this.state.user.properties.power }</span>
+            <br/>
+            { moonBtnUpdater }
+          </Modal.Body>
+
+          <Modal.Footer>
+            <Button onClick={ this.openMoonUpgrade.bind(this) }>Close</Button>
+          </Modal.Footer>
+        </Modal.Dialog>
+      </div>
+    ) : <div></div>
+
     const moonObject = this.state.moonBought === true ? (
       <img className="img-fluid"
-        src={ redPlanet }
+        src={ normalMoonImg }
         height={ this.state.items.moon.height }
         width={ this.state.items.moon.width }
         style={ { cursor: 'pointer' } }
+        onClick ={ this.openMoonUpgrade.bind(this) }
       />
     ) : <div></div>;
 
 
     // Shop Viewer
+
     const shopViewer = this.state.shopOpened != false ? (
-      <div>
-        <button onClick={ this.openShop.bind(this) } type="button" className="btn btn-outline-primary">Close Shop</button>
-        <br/>
-        {/*Moon*/}
+      <div className="static-modal">
+        <Modal.Dialog>
+          <Modal.Header>
+            <Modal.Title>Shop</Modal.Title>
+          </Modal.Header>
 
-        { shopMoon }
+          <Modal.Body>
+            { shopMoon }
+          </Modal.Body>
 
-
+          <Modal.Footer>
+            <Button onClick={ this.openShop.bind(this) }>Close</Button>
+          </Modal.Footer>
+        </Modal.Dialog>
       </div>
     ) : <button onClick={ this.openShop.bind(this) } type="button" className="btn btn-outline-primary">Shop</button>
 
@@ -130,6 +186,7 @@ export class Game extends Controler {
       <div className="row">
         <div className="col">
           <div style={{...styles, scale: this.state.planet.scale, transform: 'scale(' + this.state.planet.scale + ')'}}>
+
             <img className="planet img-fluid"
               src={ redPlanet }
               height={ this.state.planet.heigh }
@@ -144,11 +201,11 @@ export class Game extends Controler {
 
 
           </div>
-
         </div>
       </div>
-            { loaderControler }
-      </div>
+      { loaderControler }
+      { moonUgrade }
+    </div>
 
     );
   }
