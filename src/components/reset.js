@@ -10,6 +10,7 @@ class Reset extends Component {
     cookie.remove('points');
     cookie.remove('moonBought');
     cookie.remove('power');
+    cookie.remove('moonPrice');
     window.location.href = '/';
   }
 

@@ -113,6 +113,7 @@ export class Game extends Controler {
 
     const shopMoon = this.state.moonBought === false ? (
       <div>
+        <img src={normalMoonImg} height='40px' width='40px'/>
         <button onClick={ this.moonBuy.bind(this) } type="button" className="btn btn-outline-primary space">{ moonbtnName }</button>
       </div>
     ) : (
