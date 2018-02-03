@@ -114,17 +114,17 @@ export class Game extends Controler {
     const shopMoon = this.state.moonBought === false ? (
       <div>
         <img src={normalMoonImg} height='40px' width='40px'/>
-        <button onClick={ this.moonBuy.bind(this) } type="button" className="btn btn-outline-primary space">{ moonbtnName }</button>
+        <button onClick={ this.moonBuy.bind(this) } type="button" className="btn btn-outline-primary space-top">{ moonbtnName }</button>
       </div>
     ) : (
       <div>
         <img src={normalMoonImg} height='40px' width='40px'/>
-        <button type="button" className="btn btn-outline-primary space" disabled>{ this.state.items.moon.name } (Bought)</button>
+        <button type="button" className="btn btn-outline-primary space-top" disabled>{ this.state.items.moon.name } (Bought)</button>
       </div>
     );
 
     const moonBtnUpdater = (
-      <button onClick={ this.moonBuy.bind(this) } type="button" className="btn btn-outline-primary space">{ moonbtnName }</button>
+      <button onClick={ this.moonBuy.bind(this) } type="button" className="btn btn-outline-primary space-top">{ moonbtnName }</button>
     );
 
     const moonUgrade = this.state.moonUpgradeOpened === true ? (
@@ -190,7 +190,7 @@ export class Game extends Controler {
 
             <img className="planet img-fluid"
               src={ redPlanet }
-              height={ this.state.planet.heigh }
+              height={ this.state.planet.height }
               width={ this.state.planet.width }
               onClick={ this.onClickPlanet.bind(this) }
               onLoad={ this.hideLoader.bind(this) }
